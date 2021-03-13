@@ -23,16 +23,50 @@
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+
+
+
   </head>
-  <body>
+  <body style="padding: 20px 40px;">
     
 
     <h1>Tarea</h1>
 
-    <h3>Inserte CLiente</h3>
-    <input type="text" id="nombre-cliente">
-    <input type="text" id="apellido-cliente">
-    <button onclick="agregarCliente()">Agregar</button>
+    <h3>Inserte Cliente</h3>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">First and last name</span>
+      </div>
+      <input type="text" class="form-control" id="nombre-cliente">
+      <input type="text" class="form-control" id="apellido-cliente">
+      <div class="input-group-append">
+        <button class="btn btn-success" type="button" onclick="agregarCliente()">Agregar</button>
+      </div>
+    </div>
+
+    <hr>
+
+
+    <table id="table" class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(cliente, key) in clientes">
+            <td>{{ cliente.firstName }}</td>
+            <td>{{ cliente.lastName }}</td>
+            <td>
+              <button @click="deleteCliente(key)" type="button" class="btn btn-danger">borrar</button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -44,6 +78,9 @@
         }
       });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
     <script src="./index.js"></script>
   </body>
 </html>
